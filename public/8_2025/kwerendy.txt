@@ -1,0 +1,7 @@
+SELECT COUNT(Id) FROM klienci;
+
+SELECT klienci.Nazwisko, klienci.Imie, zamowienia.id FROM klienci INNER JOIN zamowienia ON zamowienia.id = klienci.Id GROUP BY zamowienia.data_odbioru DESC;
+
+SELECT klienci.Nazwisko, klienci.Imie, zamowienia.id, zamowienia.kod_koloru, zamowienia.data_odbioru, zamowienia.pojemnosc FROM klienci INNER JOIN zamowienia ON zamowienia.id = klienci.Id WHERE zamowienia.data_odbioru BETWEEN '2021-11-05'AND '2021-11-07';
+
+SELECT klienci.Imie, klienci.Nazwisko FROM klienci WHERE klienci.Plec = 'K';
