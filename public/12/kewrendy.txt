@@ -1,0 +1,10 @@
+SELECT `Rodzaj`,`Nazwa`,`Gramatura`,`Cena` FROM `wyroby` WHERE `Rodzaj` = 'inne';
+
+
+SELECT DISTINCT(Rodzaj) FROM wyroby ORDER BY Rodzaj DESC;
+
+
+SELECT `ID`,`Nazwa` FROM wyroby WHERE`Nazwa` LIKE '%Chałka%';
+
+
+SELECT `Rodzaj`, ROUND(AVG(Cena), 2) AS srednia_Cena FROM wyroby GROUP BY `Rodzaj`;

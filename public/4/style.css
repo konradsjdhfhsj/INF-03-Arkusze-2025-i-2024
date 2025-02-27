@@ -1,0 +1,51 @@
+*
+{
+    font-family: Cambria;
+}
+header, footer
+{
+    clear: both;
+    background-color: sienna;
+    color: white;
+    padding: 5px;
+    text-align: center;
+}
+main
+{
+    background-color: antiquewhite;
+    height: 700px;
+    font-size: 120%;
+    overflow-y: auto;
+    clear: both;
+}
+.kontrolki
+{
+    width: 150px;
+    margin: 10px;
+
+}
+.buty
+{
+    width: 70%;
+    margin: 15px;
+    padding: 7px;
+    border: solid 1px sienna;
+    border-radius: 30px;
+}
+.buty:hover
+{
+    background-color: linen;
+}
+img
+{
+    float: left;
+    margin: 30px;
+    text-align: left;
+    height: 100px;
+}
+h4
+{
+    background-color: sienna;
+    color: white;
+    text-align: right;
+}

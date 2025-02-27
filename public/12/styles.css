@@ -1,0 +1,63 @@
+* {
+    font-family: Verdana, sans-serif;
+}
+
+/* Ciało strony */
+body {
+    background: linear-gradient(to bottom, Teal, AliceBlue);
+    color: white;
+    text-align: center;
+    margin: 0 20px;
+}
+
+img {
+    width: 100%;
+    display: block;
+    position: fixed;
+    top: 70px;
+    z-index: -1;
+}
+
+a {
+    font-size: 130%;
+    padding: 30px;
+    color: white;
+    text-decoration: none;
+}
+
+#nawigacyjny{
+    background: rgba(160, 82, 45, 0.6);
+    padding: 10px;
+    margin-top: 100px;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+}
+
+#glowna {
+    background: SandyBrown;
+    padding: 30px;
+}
+
+#stopka {
+    background: Sienna;
+    padding: 30px;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+}
+
+h1 {
+    text-shadow: 2px 2px 5px black;
+}
+
+table {
+    margin: auto;
+    width: 70%;
+    background: Sienna;
+    border-collapse: collapse;
+    border: 1px solid SandyBrown;
+}
+
+th, td {
+    border: 1px solid SandyBrown;
+    padding: 8px;
+}

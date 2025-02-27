@@ -1,0 +1,5 @@
+SELECT Data, Temat FROM szkolenia GROUP BY Data ASC;
+
+SELECT szkolenia.Data, szkolenia.Temat, trenerzy.Nazwisko, trenerzy.Imie FROM szkolenia JOIN trenerzy ON szkolenia.Id_trenera = trenerzy.Id;
+
+SELECT trenerzy.Imie, trenerzy.Nazwisko, COUNT(szkolenia.Id) AS Liczba_szkolen FROM trenerzy JOIN szkolenia ON szkolenia.Id_trenera = trenerzy.Id GROUP BY trenerzy.Imie, trenerzy.Nazwisko;
