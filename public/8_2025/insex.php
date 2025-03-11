@@ -22,22 +22,22 @@
 
         <section id="glowny">
             <?php
-                $server = 'localhost';
-                $user = 'root';
-                $pass = '';
-                $db = 'mieszalnia';
+    $server = 'localhost';
+    $user = 'root';
+    $pass = '';
+    $db = 'mieszalnia';
 
-                $conn = mysqli_connect($server, $user, $pass, $db);
+    $conn = mysqli_connect($server,$user,$pass,$db);
 
-                $dataodb = $_POST['dataodb'] ?? null;
-                $do = $_POST['do'] ?? null;
+    $datado = $_POST['datado'] ?? null;
+    $dataod = $_POST['dataod'] ?? null;
 
-                if(empty($dataodb) || empty($do))
-                {
-                    $query = 'SELECT klienci.Nazwisko, klienci.Imie, zamowienia.id FROM klienci INNER JOIN zamowienia ON zamowienia.id = klienci.Id GROUP BY zamowienia.data_odbioru DESC';
-                    $result = $conn->query($query);
+    if(empty($dataod) || empty($datado))
+    {
+        $query = 'SELECT klienci.Nazwisko, klienci.Imie, zamowienia.id FROM klienci INNER JOIN zamowienia ON zamowienia.id = klienci.Id GROUP BY zamowienia.data_odbioru DESC';
+        $result = $conn->query($query);
 
-                    if($result -> num_rows > 0)
+        if($result -> num_rows > 0)
                     {
                         echo'<table>';
                         echo'<th>'.'Nr zamówienia'.'</th>';
@@ -49,44 +49,37 @@
                         }
                         echo'</table>';
                     }
-                }
-                else
-                {
-                    $query = 'SELECT klienci.Nazwisko, klienci.Imie, zamowienia.id, zamowienia.kod_koloru, zamowienia.data_odbioru, zamowienia.pojemnosc FROM klienci INNER JOIN zamowienia ON zamowienia.id = klienci.Id WHERE zamowienia.data_odbioru BETWEEN ? AND ?';
-                    $stmt = $conn->prepare($query);
-                    $stmt->bind_param("ss", $dataodb, $do);
-                    $stmt->execute();
-                $result = $stmt->get_result();
-
-                    if($result -> num_rows > 0)
-                    {
-                        
-                        echo'<table>';
-                        echo'<th>'.'Nr zamówienia'.'</th>';
-                        echo'<th>'.'Nazwisko'.'</th>';
-                        echo'<th>'.'Imie'.'</th>';
-                        echo'<th>'.'Kolor'.'</th>';
-                        echo'<th>'.'Pojemnosc [ml]'.'</th>';
-                        echo'<th>'.'Data odbioru'.'</th>';
-                        while($row = $result->fetch_assoc())
-                        {
-                            $kolor = $row['kod_koloru'];
-                            echo'<tr>' ;
-                                echo'<td>'.$row['id'].'</td>';
-                                echo'<td>'.$row['Nazwisko'].'</td>';
-                                echo'<td>'.$row['Imie'].'</td>';
-                                echo '<td style="background-color: #' . $kolor . ';">' . $kolor . '</td>';
-                                echo'<td>'.$row['pojemnosc'].'</td>';
-                                echo'<td>'.$row['data_odbioru'].'</td>';
-                            echo'</tr>';
-                        }
-                        echo'</table>';
-                    }
-                }
-                
-
-                mysqli_close($conn);
-            ?>
+    }
+    else
+    {
+        $query = "SELECT klienci.Nazwisko, klienci.Imie, zamowienia.id, zamowienia.kod_koloru, zamowienia.data_odbioru, zamowienia.pojemnosc FROM klienci INNER JOIN zamowienia ON zamowienia.id = klienci.Id WHERE zamowienia.data_odbioru BETWEEN '$datado' AND '$dataod'";
+        $result = $conn->query($query);
+        if($result -> num_rows > 0)
+        {
+            
+            echo'<table>';
+            echo'<th>'.'Nr zamówienia'.'</th>';
+            echo'<th>'.'Nazwisko'.'</th>';
+            echo'<th>'.'Imie'.'</th>';
+            echo'<th>'.'Kolor'.'</th>';
+            echo'<th>'.'Pojemnosc [ml]'.'</th>';
+            echo'<th>'.'Data odbioru'.'</th>';
+            while($row = $result->fetch_assoc())
+            {
+                $kolor = $row['kod_koloru'];
+                echo'<tr>' ;
+                    echo'<td>'.$row['id'].'</td>';
+                    echo'<td>'.$row['Nazwisko'].'</td>';
+                    echo'<td>'.$row['Imie'].'</td>';
+                    echo '<td style="background-color: #' . $kolor . ';">' . $kolor . '</td>';
+                    echo'<td>'.$row['pojemnosc'].'</td>';
+                    echo'<td>'.$row['data_odbioru'].'</td>';
+                echo'</tr>';
+            }
+            echo'</table>';
+        }
+    }
+    ?>
         </section>
         <footer>
             <h3>Egzamin INF.03</h3><br>
